@@ -1,0 +1,10 @@
+<productinfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="optional">
+     
+    <matlabrelease>2016a</matlabrelease>
+    <name>Multichannel audio source separation evaluation framework (MASSEF)</name>
+    <type>matlab</type>
+    <icon></icon>
+    <help_location>help_html</help_location>
+  
+</productinfo>

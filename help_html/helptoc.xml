@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding="utf-8"?>
+<toc version="2.0">
+
+    <tocitem target="help_Index.html">Multichannel audio source separation evaluation framework (MASSEF)
+        <tocitem target="help_MASSEF.html">MASSEF
+            <tocitem target="help_MASSEF_evaluate.html">MASSEF.evaluate</tocitem>
+            <tocitem target="help_MASSEF_execute.html">MASSEF.execute</tocitem>
+            <tocitem target="help_MASSEF_install.html">MASSEF.install</tocitem>
+            <tocitem target="help_MASSEF_save.html">MASSEF.save</tocitem>
+            <tocitem target="help_MASSEF_start.html">MASSEF.start</tocitem>
+        </tocitem>
+        <tocitem target="help_MASSEFresults.html">MASSEFresults
+            <tocitem target="help_MASSEFresults_algorithmInfo.html">MASSEFresults.algorithmInfo</tocitem>
+            <tocitem target="help_MASSEFresults_filter.html">MASSEFresults.filter</tocitem>
+            <tocitem target="help_MASSEFresults_input.html">MASSEFresults.input</tocitem>
+            <tocitem target="help_MASSEFresults_merge.html">MASSEFresults.merge</tocitem>
+            <tocitem target="help_MASSEFresults_mixtureInfo.html">MASSEFresults.mixtureInfo</tocitem>
+        </tocitem>
+        <tocitem target="help_Separators.html">Separation Algorithms</tocitem>
+        <tocitem target="help_Example.html">Example</tocitem>
+    </tocitem>
+
+</toc>

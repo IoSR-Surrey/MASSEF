@@ -1,0 +1,4 @@
+[submodule "Library"]
+	path = Library
+	url = https://github.com/IoSR-Surrey/MatlabToolbox.git
+	branch = master
