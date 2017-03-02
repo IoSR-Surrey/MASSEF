@@ -2,6 +2,8 @@
 % 
 %% Overview
 % 
+% <<../MASSEF.png>>
+% 
 % The multichannel audio source separation evaluation framework is designed
 % to faciliate the development and evaluation of audio source separation
 % algorithms. The framework generates the mixture(s), calculates the ideal
