@@ -2,7 +2,9 @@
 
 [Chris Hummersone](mailto:c.hummersone@surrey.ac.uk), Martin Dewhirst, Joachim Fainberg
 
-The multichannel audio source separation evaluation framework is designed to facilitate the development and evaluation of audio source separation algorithms. The framework generates the mixture(s), calculates the ideal binary and ratio masks, provides the mixture(s) to the separation algorithm(s), and evaluates the outputs of the separation algorithm(s). The framework also evaluates the ideal masks for the purposes of comparison.
+![MASSEF](/MASSEF.png?raw=true "MASSEF")
+
+The multichannel audio source separation evaluation framework is designed to facilitate the development and evaluation of audio source separation algorithms. The framework generates the mixture(s), calculates the ideal binary and ratio masks, provides the mixture(s) to the separation algorithm(s), and evaluates the outputs of the separation algorithm(s). The framework can also evaluate the ideal masks for the purposes of comparison.
 
 Sources may have any number of channels; the framework evaluates each channel. The use of [`iosr.bss.mixture`](https://github.com/IoSR-Surrey/MatlabToolbox) objects facilitate the evaluation of spatialised mixtures (e.g. binaural).
 
