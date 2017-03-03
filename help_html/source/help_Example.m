@@ -1,11 +1,11 @@
 %% Example
 % 
-%% First Steps 
+%% First steps 
 
 MASSEF.install; % you only need to do this once!
 MASSEF.start; % start MASSEF
 
-%% Make Mixtures
+%% Make mixtures
 % Specify the source files:
 
 target_fns = {'s1.wav','s2.wav'}; % target filenames
@@ -54,7 +54,7 @@ mixtures = iosr.bss.generateMixtures(t,i,...
     )...
 );
 
-%% Instantiate the Separation Algorithm
+%% Instantiate the separation algorithm
 
 p = messl_massef(fs);
 
