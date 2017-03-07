@@ -31,10 +31,9 @@ classdef MASSEF < handle
 %   Type
 % 
 %       MASSEF.start
-%       doc
+%       MASSEF.doc
 % 
-%   and click 'Multichannel audio source separation evaluation framework
-%   (MASSEF)' under 'Supplemental Software' for more information.
+%   for more information.
 % 
 %   MASSEF can be used to evaluate and compare separation algorithms,
 %   provided that the algorithms conform to the required format. Consult
@@ -77,6 +76,7 @@ classdef MASSEF < handle
 %                             and separators.
 %       save                - Save the framework's data and results.
 %     Static methods:
+%       doc                 - Display the framework documentation.
 %       start               - Start the framework.
 %       install             - Download and install MASSEF dependencies.
 % 
@@ -199,11 +199,9 @@ classdef MASSEF < handle
         %   separation algorithm instances contained in SEPARATORS should
         %   conform to the required format. Type
         % 
-        %       doc
+        %       MASSEF.doc
         % 
-        %   and click 'Multichannel audio source separation evaluation
-        %   framework (MASSEF)' under 'Supplemental Software' for more
-        %   information.
+        %   for more information.
         % 
         %   The EXECUTE method performs evaluations of the algorithm
         %   according to the data returned by the algorithm, and the
@@ -536,6 +534,15 @@ classdef MASSEF < handle
     end % public methods
     
     methods (Static)
+        
+        function doc
+        %DOC Display the framework documentation.
+            try
+                web(fullfile(MASSEF.dir, 'help_html', 'help_Index.html'), '-helpbrowser')
+            catch
+                web(fullfile(MASSEF.dir, 'help_html', 'help_Index.html'))
+            end
+        end
         
         function start
         %START Start the framework.
