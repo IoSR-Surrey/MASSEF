@@ -11,6 +11,7 @@ publish('help_Index.m',options);
 publish('help_MASSEF.m',options);
 publish('help_MASSEF_evaluate.m',options);
 publish('help_MASSEF_execute.m',options);
+publish('help_MASSEF_doc.m',options);
 publish('help_MASSEF_install.m',options);
 publish('help_MASSEF_save.m',options);
 publish('help_MASSEF_start.m',options);

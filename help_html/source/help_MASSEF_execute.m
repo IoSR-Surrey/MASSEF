@@ -8,12 +8,12 @@
 % 
 % |massef.execute(mixtures,separators)| runs the multichannel audio source
 % separation evaluation framework (MASSEF) using the <help_MASSEF.html
-% MASSEF> instance |massef|, the array of |iosr.bss.mixture| objects
-% |mixtures| and the array (or cell array) of instances of separation
-% algorithms contained in |separators|. Separation is performed for all
-% combinations of separators and mixtures. The separation algorithm
-% instances contained in |separators| should conform to the
-% <help_Separators.html required format>.
+% MASSEF> instance |massef|, the array of <matlab:doc('iosr.bss.mixture')
+% |iosr.bss.mixture|> objects |mixtures| and the array (or cell array) of
+% instances of separation algorithms contained in |separators|. Separation
+% is performed for all combinations of separators and mixtures. The
+% separation algorithm instances contained in |separators| should conform
+% to the <help_Separators.html required format>.
 % 
 % The |execute| method performs evaluations of the algorithm according to
 % the data returned by the algorithm, and the options provided to
@@ -43,7 +43,7 @@
 % The |execute| method also calculates and evaluates the ideal binary and
 % ratio masks using the signal-related metrics utilised for the algorithm
 % evaluation. The masks are calculated using the settings that are local to
-% each |iosr.bss.mixture| object.
+% each <matlab:doc('iosr.bss.mixture') |iosr.bss.mixture|> object.
 % 
 % Lastly, the framework captures the estimated azimuth and elevation of the
 % targets and interferer(s), if they are returned.

@@ -48,10 +48,8 @@ at the start of each session to start the framework and its dependencies.
 Experiments are conducted with the MASSEF class. For more information about the various framework options, type
 
 ```
-doc
+MASSEF.doc
 ```
-
-and click 'Multichannel audio source separation evaluation framework (MASSEF)' under 'Supplemental Software' for more information.
 
 More information on implementing separation algorithms can be found in the help documentation.
 

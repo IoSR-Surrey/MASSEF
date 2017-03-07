@@ -58,6 +58,10 @@ mixtures = iosr.bss.generateMixtures(t,i,...
 
 p = messl_massef(fs);
 
+%%
+% |messl_massef| is a wrapper class for the <https://github.com/mim/messl
+% messl> algorithm. The class implementation is shown below.
+
 %% Choose MASSEF options
 % Specify the parameters of the MASSEF object:
 
@@ -77,6 +81,14 @@ massef.execute(mixtures,p);
 % the following way:
 
 resultsTable = massef.results.data;
+
+%% MESSL wrapper implementation
+% <matlab:edit(fullfile(MASSEF.dir,'help_html','source','messl_massef.m'))
+% Open in the MATLAB editor>.
+% 
+% <include>messl_massef.m</include>
+% 
+% See <help_Separators.html Separation Algorithms> for more information.
 
 %% See also
 % <help_MASSEF.html MASSEF>, <help_MASSEFresults.html MASSEFresults>.

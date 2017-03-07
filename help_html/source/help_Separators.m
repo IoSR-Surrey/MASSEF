@@ -48,7 +48,8 @@
 % 
 % The |MASSEFseparator| class is provided for use as a base class for
 % separation algorithms. The |separate()| method is abstract and hence must
-% be implemented in the derived class.
+% be implemented in the derived class. See the <help_Example.html Example>
+% page for an example of the use of |MASSEFseparator|.
 % 
 %% See also
 % <help_MASSEF.html MASSEF>, <help_MASSEF_execute.html MASSEF.execute>.
