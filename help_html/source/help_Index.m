@@ -12,8 +12,9 @@
 % evaluate the ideal masks for the purposes of comparison.
 % 
 % Sources may have any number of channels; the framework evaluates each
-% channel. The use of iosr.bss.mixture objects facilitate the evaluation of
-% spatialised mixtures (e.g. binaural).
+% channel. The use of <matlab:doc('iosr.bss.mixture') |iosr.bss.mixture|>
+% objects facilitate the evaluation of spatialised mixtures (e.g.
+% binaural).
 % 
 % The framework comprises two main classes:
 % 
@@ -40,7 +41,8 @@
 % 
 % The framework can be run in two ways:
 % 
-% # by providing |iosr.bss.mixture| objects and separation algorithms, or
+% # by providing <matlab:doc('iosr.bss.mixture') |iosr.bss.mixture|>
+%   objects and separation algorithms, or
 % # by providing estimate and true source wav files.
 %   
 % If 1), the framework operates as described above. In addition, the
