@@ -83,6 +83,9 @@ massef.execute(mixtures,p);
 resultsTable = massef.results.data;
 
 %% MESSL wrapper implementation
+% <matlab:edit(fullfile(MASSEF.dir,'help_html','source','messl_massef.m'))
+% Open in the MATLAB editor>.
+% 
 % <include>messl_massef.m</include>
 % 
 % See <help_Separators.html Separation Algorithms> for more information.
