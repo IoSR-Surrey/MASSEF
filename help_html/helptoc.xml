@@ -5,6 +5,7 @@
         <tocitem target="help_MASSEF.html">MASSEF
             <tocitem target="help_MASSEF_evaluate.html">MASSEF.evaluate</tocitem>
             <tocitem target="help_MASSEF_execute.html">MASSEF.execute</tocitem>
+            <tocitem target="help_MASSEF_doc.html">MASSEF.doc</tocitem>
             <tocitem target="help_MASSEF_install.html">MASSEF.install</tocitem>
             <tocitem target="help_MASSEF_save.html">MASSEF.save</tocitem>
             <tocitem target="help_MASSEF_start.html">MASSEF.start</tocitem>

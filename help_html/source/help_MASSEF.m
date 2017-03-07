@@ -27,6 +27,10 @@
 % considered at any one time. The default is 128.</td>
 % </tr>
 % <tr>
+% <td><tt>creationDate</tt></td>
+% <td>Date the object was created (read-only).</td>
+% </tr>
+% <tr>
 % <td><tt>dir</tt></td>
 % <td>The MASSEF installation directory (read-only).</td>
 % </tr>
@@ -59,6 +63,10 @@
 % href="help_MASSEF_execute.html">MASSEF.execute</a> finishes.
 % The default is <tt>'Results/results.mat'</tt>.</td>
 % </tr>
+% <tr>
+% <td><tt>saveDate</tt></td>
+% <td>Date the object was last saved (read-only).</td>
+% </tr>
 % </table>
 % </html>
 %   
@@ -80,6 +88,10 @@
 % <td><a href="help_MASSEF_execute.html">execute</a></td>
 % <td>Run the framework using the input mixtures and separators.</td>
 % </tr>
+% <tr>
+% <td><a href="help_MASSEF_save.html">save</a></td>
+% <td>Save the framework's data and results.</td>
+% </tr>
 % </table>
 % </html>
 % 
@@ -87,6 +99,9 @@
 % 
 % <html>
 % <table>
+% <tr>
+% <td><a href="help_MASSEF_doc.html">doc</a></td>
+% <td>Display the framework documentation.</td>
 % </tr>
 % <tr>
 % <td><a href="help_MASSEF_install.html">install</a></td>
@@ -95,6 +110,7 @@
 % <tr>
 % <td><a href="help_MASSEF_start.html">start</a></td>
 % <td>Start the framework.</td>
+% </tr>
 % </table>
 % </html>
 % 
