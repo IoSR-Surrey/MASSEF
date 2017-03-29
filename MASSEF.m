@@ -403,6 +403,7 @@ classdef MASSEF < handle
                     'target_ele', mixtures(n).target.elevation, ...
                     'tir', mixtures(n).tir ...
                     );
+                mixtures(n).clearCache();
             end
             
             obj.save();
@@ -561,7 +562,6 @@ classdef MASSEF < handle
 
             SOFAstart(0);
             amtstart;
-            iosr.install;
             
             d = pwd;
             cd([MASSEF.dir filesep 'help_html' filesep 'source'])

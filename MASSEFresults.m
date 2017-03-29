@@ -35,6 +35,8 @@ classdef MASSEFresults < handle
 %   MASSEFRESULTS methods:
 %       MASSEFresults       - Create a MASSEFresults object.
 %       algorithmInfo       - Add algorithm information.
+%       boxPlot             - Analyse the results data by plotting notched
+%                             box plots.
 %       filter              - Filter the results set.
 %       input               - Add performance data.
 %       merge               - Combine results array into singular object.
@@ -304,6 +306,33 @@ classdef MASSEFresults < handle
             
         end
         
+        function bph = boxPlot(obj)
+        %BOXPLOT Analyse the results data by plotting notched box plots
+        %
+        %   R.BOXPLOT() produces a series of box plots, one for each
+        %   metric, plotting the performance of each algorithms/estimate
+        %   aggregated across all mixtures.
+        %
+        %   BPH = R.BOXPLOT() returns an array of IOSR.STATISTICS.BOXPLOT
+        %   objects BPH for the plots.
+            
+            for m = numel(obj.metrics):-1:1
+                
+                tabData = obj.filter('metric', @(x) strcmp(x, obj.metrics{m}), 'channel', 'max');
+                tabData.name = strcat(tabData.algorithmLabel, ':', {' '}, tabData.estTag);
+                
+                [y, x] = iosr.statistics.tab2box(tabData.name, tabData.value);
+                
+                figure
+                bph(m) = iosr.statistics.boxPlot(x, y, 'notch', true);
+                ylabel(obj.metrics{m})
+                xlabel('Algorithm')
+                box on
+                
+            end
+            
+        end
+        
     end % public methods
     
     methods (Hidden)
@@ -331,15 +360,16 @@ classdef MASSEFresults < handle
                 end
                 % do stats
                 try
-                    dataTable = varfun(fhandle,dataTable,'InputVariables','value',...
+                    filteredTable = varfun(fhandle,dataTable,'InputVariables','value',...
                         'GroupingVariables',group);
                 catch
-                    dataTable = varfun(fhandle,dataTable,'InputVariables','value',...
+                    filteredTable = varfun(fhandle,dataTable,'InputVariables','value',...
                         'GroupingVariables',altgroup);
                 end
                 % rename value column and delete GroupCount column
-                dataTable = obj.findRenameVar(dataTable,'value','value');
-                dataTable.GroupCount = [];
+                filteredTable = obj.findRenameVar(filteredTable,'value','value');
+                filteredTable.GroupCount = [];
+                dataTable = join(filteredTable, dataTable);
             else
                 % normal filter function
                 dataTable = obj.filterRows(dataTable,filterval,col);
