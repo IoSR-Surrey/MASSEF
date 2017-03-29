@@ -360,14 +360,18 @@ classdef MASSEFresults < handle
                 try
                     filteredTable = varfun(fhandle,dataTable,'InputVariables','value',...
                         'GroupingVariables',group);
+                    keys = group;
                 catch
                     filteredTable = varfun(fhandle,dataTable,'InputVariables','value',...
                         'GroupingVariables',altgroup);
+                    keys = altgroup;
                 end
                 % rename value column and delete GroupCount column
                 filteredTable = obj.findRenameVar(filteredTable,'value','value');
                 filteredTable.GroupCount = [];
-                dataTable = join(filteredTable, dataTable);
+                [~, ia, ib] = intersect(filteredTable(:,keys), dataTable(:,keys));
+                dataTable.value(ib) = filteredTable.value(ia);
+                dataTable = dataTable(ib, :);
             else
                 % normal filter function
                 dataTable = obj.filterRows(dataTable,filterval,col);
