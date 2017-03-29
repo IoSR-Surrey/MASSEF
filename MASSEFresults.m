@@ -213,8 +213,6 @@ classdef MASSEFresults < handle
                 end
                 
             end
-            
-            data = obj.joinLookupTables(data);
         
         end
         
