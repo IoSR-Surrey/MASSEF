@@ -180,7 +180,7 @@ classdef MASSEFresults < handle
         %         parameter should be a function handle that takes the
         %         value as its input, and returns a logical value.
             
-            assert(mod(length(varargin),2)==0,'input must contain parameter/value pairs')
+            assert(mod(length(varargin),2)==0,'MASSEFresults:filter:invalidArgs','input must contain parameter/value pairs')
             data = obj.data;
             
             % work through varargin
@@ -327,7 +327,7 @@ classdef MASSEFresults < handle
                     case 'mean'
                         fhandle = @mean;
                     otherwise
-                        error('Unknown filter parameter ''%s''.',filterval)
+                        error('MASSEFresults:filterRowOrAggregate:unknownOption','Unknown filter parameter ''%s''.',filterval)
                 end
                 % do stats
                 try
@@ -366,7 +366,7 @@ classdef MASSEFresults < handle
         function dataTable = addData(dataTable,key,keyVal,varargin)
         %ADDDATA add data to lookup tables.
             
-            assert(mod(length(varargin),2)==0,'input must contain parameter/value pairs')
+            assert(mod(length(varargin),2)==0,'MASSEFresults:addData:invalidArgs','input must contain parameter/value pairs')
             rI = find(ismember(dataTable.(key),keyVal),1,'first');
             if isempty(rI) % add a new row
                 % get data from varargin
@@ -412,7 +412,7 @@ classdef MASSEFresults < handle
         function dataTable = filterRows(dataTable,fhandle,col)
         %FILTERROWS filter the rows in a table.
             
-            assert(isa(fhandle,'function_handle'),'Parameter must be a function handle')
+            assert(isa(fhandle,'function_handle'),'MASSEFresults:filterRows:invalidFhandle','Parameter must be a function handle')
             dataTable = dataTable(fhandle(dataTable.(col)),:);
             
         end
