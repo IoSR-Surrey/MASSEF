@@ -38,7 +38,7 @@ classdef MASSEFseparator < handle
             elseif iscellstr(val)
                 obj.estTag = val;
             else
-                error('''estTag'' must be a char array or cell array of strings');
+                error('MASSEFseparator:estTag:invalid','''estTag'' must be a char array or cell array of strings');
             end
         end
         
@@ -47,7 +47,7 @@ classdef MASSEFseparator < handle
             if ischar(val)
                 obj.label = val;
             else
-                error('''label'' must be a char array');
+                error('MASSEFseparator:label:invalid','''label'' must be a char array');
             end
         end
         

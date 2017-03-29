@@ -148,31 +148,31 @@ classdef MASSEF < handle
         % validate properties
         
         function set.blocksize(obj,val)
-            assert(isnumeric(val) && isscalar(val),'blocksize must be a numeric scalar.')
-            assert(round(val)==val,'blocksize must be an integer.')
-            assert(val>=1,'blocksize must be greater than or equal to 1.')
+            assert(isnumeric(val) && isscalar(val),'MASSEF:blocksize:invalid','blocksize must be a numeric scalar.')
+            assert(round(val)==val,'MASSEF:invalidBlocksize','blocksize must be an integer.')
+            assert(val>=1,'MASSEF:invalidBlocksize','blocksize must be greater than or equal to 1.')
             obj.blocksize = val;
         end
         
         function set.evalPEASS(obj,val)
-            assert(islogical(val) && isscalar(val),'evalPEASS must be a logical scalar.')
+            assert(islogical(val) && isscalar(val),'MASSEF:evalPEASS:invalid','evalPEASS must be a logical scalar.')
             obj.evalPEASS = val;
         end
         
         function set.evalSTOI(obj,val)
-            assert(islogical(val) && isscalar(val),'evalSTOI must be a logical scalar.')
+            assert(islogical(val) && isscalar(val),'MASSEF:evalSTOI:invalid','evalSTOI must be a logical scalar.')
             obj.evalSTOI = val;
         end
         
         function set.parpool(obj,val)
             if ~isempty(val)
-                assert(isa(val,'parallel.Pool'),'parpool must be a parallel.pool object.')
+                assert(isa(val,'parallel.Pool'),'MASSEF:parpool:invalid','parpool must be a parallel.pool object.')
             end
             obj.parpool = val;
         end
         
         function set.results_filename(obj,val)
-            assert(ischar(val),'results_filename must be a char array')
+            assert(ischar(val),'MASSEF:results_filename:invalid','results_filename must be a char array')
             obj.results_filename = val;
         end
         
@@ -243,7 +243,7 @@ classdef MASSEF < handle
         %   object, is saved to the file given by MASSEF.results_filename.
         
             % check the mixtures
-            assert(isa(mixtures,'iosr.bss.mixture'),'The MIXTURES input must contain one or more objects of class ''iosr.bss.mixture''.')
+            assert(isa(mixtures,'iosr.bss.mixture'),'MASSEF:execute:invalidMixtures','The MIXTURES input must contain one or more objects of class ''iosr.bss.mixture''.')
             
             if exist('separators','var')~=1
                 separators = {};
@@ -270,7 +270,7 @@ classdef MASSEF < handle
             if exist(tempdir,'dir')~=7
                 success = mkdir(tempdir);
                 if ~success
-                    error('Unable to create directory %s. Please create it.',tempdir)
+                    error('MASSEF:execute:mkdir','Unable to create directory %s. Please create it.',tempdir)
                 end
             end
 
@@ -455,22 +455,22 @@ classdef MASSEF < handle
             if exist('tag','var')~=1
                 tag = '';
             else
-                assert(ischar(tag),'TAG must be a char array')
+                assert(ischar(tag),'MASSEF:evaluate:invalidTag','TAG must be a char array')
             end
             if exist('mixnum','var')~=1
                 mixnum = 1;
             else
-                assert(isscalar(mixnum),'MIXNUM must be a scalar')
+                assert(isscalar(mixnum),'MASSEF:evaluate:invalidMixnum','MIXNUM must be a scalar')
             end
             if exist('sepnum','var')~=1
                 sepnum = 1;
             else
-                assert(isscalar(sepnum),'SEPNUM must be a scalar')
+                assert(isscalar(sepnum),'MASSEF:evaluate:invalidSepnum','SEPNUM must be a scalar')
             end
             if exist('estnum','var')~=1
                 estnum = 1;
             else
-                assert(isscalar(estnum),'ESTNUM must be a scalar')
+                assert(isscalar(estnum),'MASSEF:evaluate:invalidEstnum','ESTNUM must be a scalar')
             end
             
             [estimate,fs] = audioread(estimateFile);
@@ -659,6 +659,8 @@ classdef MASSEF < handle
                     display('Found existing IoSR Matlab Toolbox directory')
                 end
             end
+            
+            iosr.install;
 
             %% Remaining clean up
 
@@ -874,7 +876,7 @@ classdef MASSEF < handle
 
             % check format
             if numel(options)>1
-                error('The input to MASSEF should be a 1x1 structure. Cell-array fields should be encapsulated within a single cell.')
+                error('MASSEF:validate_options:invalidInput','The input to MASSEF should be a 1x1 structure. Cell-array fields should be encapsulated within a single cell.')
             end
 
             fields_in = fieldnames(options);
@@ -896,7 +898,7 @@ classdef MASSEF < handle
 
             % check for invalid options
             for r = 1:length(fields_in)
-                assert(any(strcmpi(fields_in{r},def_fields)),['Invalid option ''' fields_in{r} ''' specified.'])
+                assert(any(strcmpi(fields_in{r},def_fields)),'MASSEF:validate_options:invalidOption',['Invalid option ''' fields_in{r} ''' specified.'])
             end
 
             % write defaults
@@ -916,7 +918,7 @@ classdef MASSEF < handle
             IV_space = [numMixtures max(1,numSeparators)];
 
             iterations = prod(IV_space); % total number of results
-            assert(numMixtures>0,'No mixtures have been specified')
+            assert(numMixtures>0,'MASSEF:initialise_IVs:noMixtures','No mixtures have been specified')
             %assert(numSeparators>0,'No separators have been specified')
 
             IVs = struct('algo_num',[],'mixture_num',[]);
@@ -932,11 +934,11 @@ classdef MASSEF < handle
         function check_separator(obj)
         %CHECK_SEPARATOR Check separator meets requirements
 
-            assert(isprop(obj,'label'),['The object of class ''' class(obj) ''' does not have the required property ''label'''])
-            assert(ischar(obj.label),['The ''label'' property of the ''' class(obj) ''' object should return a char array'])
-            assert(isprop(obj,'estTag'),['The object of class ''' class(obj) ''' does not have the required property ''estTag'''])
-            assert(iscellstr(obj.estTag),['The ''estTag'' property of the ''' class(obj) ''' object should return a cell array of strings'])
-            assert(ismethod(obj,'separate'),['The object of class ''' class(obj) ''' does not have the required method ''separate'''])
+            assert(isprop(obj,'label'),'MASSEF:check_separator:invalidSepNoLabel',['The object of class ''' class(obj) ''' does not have the required property ''label'''])
+            assert(ischar(obj.label),'MASSEF:check_separator:invalidSepLabelProp',['The ''label'' property of the ''' class(obj) ''' object should return a char array'])
+            assert(isprop(obj,'estTag'),'MASSEF:check_separator:invalidSepNoEstTag',['The object of class ''' class(obj) ''' does not have the required property ''estTag'''])
+            assert(iscellstr(obj.estTag),'MASSEF:check_separator:invalidSepEstTagProp',['The ''estTag'' property of the ''' class(obj) ''' object should return a cell array of strings'])
+            assert(ismethod(obj,'separate'),'MASSEF:check_separator:invalidSepNoSepMethod',['The object of class ''' class(obj) ''' does not have the required method ''separate'''])
 
         end
         
