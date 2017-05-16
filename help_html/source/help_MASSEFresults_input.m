@@ -12,6 +12,6 @@
 % 
 % <html>
 % <hr>
-% <p>Copyright &copy; 2016 <a href="http://www.surrey.ac.uk">University of Surrey</a><br>
+% <p>Copyright &copy; 2017 <a href="http://www.surrey.ac.uk">University of Surrey</a><br>
 % <a href="http://iosr.uk">Institute of Sound Recording, University of Surrey, UK</a></p>
 % </html>
