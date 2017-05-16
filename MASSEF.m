@@ -242,6 +242,8 @@ classdef MASSEF < handle
         %   contains the results data in MASSEF.results as a MASSEFresults
         %   object, is saved to the file given by MASSEF.results_filename.
         
+            currDir = pwd;
+        
             % check the mixtures
             assert(isa(mixtures,'iosr.bss.mixture'),'MASSEF:execute:invalidMixtures','The MIXTURES input must contain one or more objects of class ''iosr.bss.mixture''.')
             
@@ -265,7 +267,7 @@ classdef MASSEF < handle
 
             directory = fileparts(which([mfilename '.m']));
             cd(directory)
-            tempdir = [cd filesep 'temp'];
+            tempdir = [cd filesep 'massef_temp'];
             % ensure temp directory exists:
             if exist(tempdir,'dir')~=7
                 success = mkdir(tempdir);
@@ -404,16 +406,17 @@ classdef MASSEF < handle
                     'tir', mixtures(n).tir ...
                     );
                 mixtures(n).clearCache();
+                mixtures(n).deleteFiles();
             end
             
             obj.save();
             save(obj.results_filename,'mixtures','separators','-append');
             
             % delete temporary files
-            delete(sprintf('%s*',[tempdir filesep]));
             delete(sprintf('%s*',[obj.PEASSoptions.destDir filesep]))
             
             fprintf('\n')
+            cd(currDir);
             disp('MASSEF finished.');
             
         end
@@ -585,7 +588,8 @@ classdef MASSEF < handle
         %         (https://github.com/IoSR-Surrey/MatlabToolbox)
         %       - SOFA API
         %         (https://sourceforge.net/projects/sofacoustics/).
-
+            
+            currDir = pwd;
             directory = MASSEF.dir;
             cd(directory);
 
@@ -665,7 +669,7 @@ classdef MASSEF < handle
             %% Remaining clean up
 
             delete(adapt_filename)
-
+            cd(currDir);
             disp('MASSEF successfully installed.')
 
         end
@@ -790,7 +794,7 @@ classdef MASSEF < handle
                 
                 ibmFile = sprintf('%sibm-%d.wav',obj.PEASSoptions.destDir,iteration);
                 audiowrite(ibmFile,iosr.dsp.audio.normalize(output_ibm),mix.fs);
-                irmFile = sprintf('%sibm-%d.wav',obj.PEASSoptions.destDir,iteration);
+                irmFile = sprintf('%sirm-%d.wav',obj.PEASSoptions.destDir,iteration);
                 audiowrite(irmFile,iosr.dsp.audio.normalize(output_irm),mix.fs);
                 
                 obj.evaluate(originalFiles,ibmFile,...
