@@ -181,6 +181,9 @@ classdef MASSEFresults < handle
         %       - 'value' - Filters the data according to the value. The
         %         parameter should be a function handle that takes the
         %         value as its input, and returns a logical value.
+        %   
+        %   If using the 'mean' or 'max' option, the respective variable is
+        %   removed from the output.
             
             assert(mod(length(varargin),2)==0,'MASSEFresults:filter:invalidArgs','input must contain parameter/value pairs')
             data = obj.data;
@@ -372,6 +375,7 @@ classdef MASSEFresults < handle
                 [~, ia, ib] = intersect(filteredTable(:,keys), dataTable(:,keys));
                 dataTable.value(ib) = filteredTable.value(ia);
                 dataTable = dataTable(ib, :);
+                dataTable(:, col) = [];
             else
                 % normal filter function
                 dataTable = obj.filterRows(dataTable,filterval,col);
